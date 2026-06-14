@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiva Kumar | Web Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0A0F1E;
+            color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Sticky Glassmorphism Header */
+        .header {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            background: rgba(10, 15, 30, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,215,0,0.2);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s ease;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav a:hover {
+            color: #FFD700;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 120px 0 100px;
+            background: radial-gradient(circle at 50% 0%, rgba(255,215,0,0.15) 0%, transparent 70%);
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero .highlight {
+            color: #FFD700;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #B0B0B0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Buttons */
+        .btn-group {
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid #FFD700;
+            color: #FFD700;
+            padding: 12px 32px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 40px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #FFD700;
+            color: #0A0F1E;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #FFC107;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,215,0,0.3);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,215,0,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #FFD700;
+            animation: expandWidth 0.6s ease;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 60px; }
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: rgba(255,215,0,0.02);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            animation: slideInLeft 0.8s ease;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .about-text p {
+            color: #B0B0B0;
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            animation: slideInRight 0.8s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(255,215,0,0.1);
+            border-color: #FFD700;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        /* Skills Grid */
+        .skills {
+            padding: 80px 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .skill-card {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: fadeInUp 0.6s ease;
+            animation-fill-mode: backwards;
+        }
+
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+        .skill-card:nth-child(4) { animation-delay: 0.4s; }
+        .skill-card:nth-child(5) { animation-delay: 0.5s; }
+        .skill-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .skill-card:hover {
+            border-color: #FFD700;
+            transform: translateY(-3px);
+            background: rgba(255,215,0,0.05);
+        }
+
+        /* Projects Grid */
+        .projects {
+            padding: 80px 0;
+            background: rgba(255,215,0,0.02);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: fadeInUp 0.6s ease;
+            animation-fill-mode: backwards;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.3s; }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #FFD700;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .project-card h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .project-card p {
+            color: #B0B0B0;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 12px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #0A0F1E 0%, #0D1225 100%);
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: #8892B0;
+            font-size: 14px;
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav a {
+                margin: 0 15px;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Shiva Kumar</div>
+            <div class="nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Work</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero" id="home">
+            <h1>I Build <span class="highlight">Websites</span> That Work</h1>
+            <p>Affordable, fast, and responsive websites for small businesses, tutors, and entrepreneurs.</p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Let's Connect</a>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="about" id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text reveal">
+                        <p>I am a web developer and founder of Shiva's Tutorial. I build clean, modern, responsive websites that help businesses grow online.</p>
+                        <p>I focus on delivering quality work fast — without hidden charges. Whether you need a portfolio site, business website, or landing page, I can help.</p>
+                    </div>
+                    <div class="about-stats reveal">
+                        <div class="stat-card">
+                            <div class="stat-number">3+</div>
+                            <div>Projects Delivered</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">100%</div>
+                            <div>Client Satisfaction</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">7 Days</div>
+                            <div>Average Delivery</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">24/7</div>
+                            <div>Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="skills">
+            <div class="container">
+                <h2 class="section-title reveal">Skills & Tools</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">Python & Django</div>
+                    <div class="skill-card">HTML5 & CSS3</div>
+                    <div class="skill-card">JavaScript</div>
+                    <div class="skill-card">Responsive Design</div>
+                    <div class="skill-card">Git & GitHub</div>
+                    <div class="skill-card">Render Deployment</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="projects" id="projects">
+            <div class="container">
+                <h2 class="section-title reveal">My Work</h2>
+                <div class="projects-grid">
+                    <div class="project-card reveal">
+                        <h3>Shiva's Tutorial</h3>
+                        <p>Online tutoring platform with student registration, tutor onboarding, and volunteer program.</p>
+                        <a href="https://shiva-stutorials.onrender.com" target="_blank" class="project-link">Live Demo →</a>
+                    </div>
+                    <div class="project-card reveal">
+                        <h3>Shiva's Solutions</h3>
+                        <p>Website development service landing page for small businesses and entrepreneurs.</p>
+                        <a href="https://shiva-stutorials.onrender.com/solutions/" target="_blank" class="project-link">Live Demo →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact" id="contact">
+            <div class="container">
+                <h2 class="section-title reveal">Let's Work Together</h2>
+                <p>Have a project in mind? Let's discuss.</p>
+                <div class="contact-buttons">
+                    <a href="https://wa.me/916300893654" class="btn btn-primary">WhatsApp Me</a>
+                    <a href="mailto:shivastutorial.info@gmail.com" class="btn btn-outline">Email Me</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2026 Shiva Kumar. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- Scroll Reveal JavaScript -->
+    <script>
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return rect.top <= window.innerHeight - 100;
+        }
+
+        function handleScroll() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                if (isElementInViewport(reveals[i])) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+    </script>
+</body>
+</html>
