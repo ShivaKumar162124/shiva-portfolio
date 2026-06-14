@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-s78)j_1z#&fbr4wjn-1hm_s7vuad)d_7s!o%21rrf_9bgx+40e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['shiva-portfolio.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['shiva-portfolio-4v82.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
